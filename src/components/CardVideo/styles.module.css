@@ -1,0 +1,48 @@
+.card{
+  min-width: 16rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card > img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.title{
+  display: flex;
+  gap: 0.8rem;
+}
+
+.title img{
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.description > strong{
+  font-size: 0.875rem;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.description > p{
+  font-size: 0.75rem;
+  color: var(--gray-aa);
+}
+
+.info{
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--gray-aa);
+}
+
+.info > span{
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gray-aa);
+}
