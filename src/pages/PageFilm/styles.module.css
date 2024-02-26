@@ -1,0 +1,44 @@
+.container{
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container > img{
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.content-movie-page{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.content-movie-page > img{
+  width: 100%;
+  max-width: 16rem;
+}
+
+.content-description-movie-page{
+  width: 100%;
+  max-width: 30rem;
+}
+
+.content-description-movie-page > strong{
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+  display: inline-block;
+}
+
+.video-film{
+  width: 100%;
+  max-width: 28rem;
+}
+

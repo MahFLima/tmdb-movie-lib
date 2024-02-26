@@ -29,7 +29,7 @@ function Menu(props) {
             onClick={props.click}
           />
         </button>
-        <img src={logo} alt="logo youtube" />
+        <Link to="/">TMDB Movie-Lib</Link>
       </div>
       <div className={styles["search-area"]}>
         <input type="text" placeholder="Buscar" />

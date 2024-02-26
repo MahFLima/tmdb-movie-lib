@@ -33,13 +33,6 @@ function Home() {
           )
         })}
       </section>
-      {/* <section className={`${styles["content-videos"]}`}>
-        <CardVideo />
-        <CardVideo />
-        <CardVideo />
-        <CardVideo />
-        <CardVideo />
-      </section> */}
     </>
   );
 }
