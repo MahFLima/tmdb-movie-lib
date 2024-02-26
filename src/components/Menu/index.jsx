@@ -102,16 +102,6 @@ function Menu(props) {
           </a>
         </li>
       </ul>
-      <div className={styles.line}></div>
-      <p className={styles.subtitle}>SUBSCRIPTIONS</p>
-      <ul className={styles.navigation}>
-        <TagPersonMenu />
-        <TagPersonMenu />
-        <TagPersonMenu />
-        <TagPersonMenu />
-        <TagPersonMenu />
-        <TagPersonMenu />
-      </ul>
     </nav>
   );
 }

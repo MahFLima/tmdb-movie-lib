@@ -1,28 +1,28 @@
 import React from "react";
 
 import styles from "./styles.module.css";
-import image from "../../assets/image.png";
+import { Link } from "react-router-dom";
 
-function CardVideo() {
+const imageUrl = import.meta.env.VITE_IMG
+
+function CardVideo({movie}) {
   return (
-    <section className={styles.card}>
-      <img src={image} alt="" />
+    <Link to={`/movie/${movie.id}`} className={styles.card}>
+      <img src={imageUrl + movie.poster_path} alt={movie.title} />
       <div className={styles.title}>
-        <img src="https://github.com/mahflima.png" alt="" />
-
         <div className={styles.description}>
           <strong>
-            Bulbuli | Coke Studio Bangla | Season One | Ritu Raj X Nandita
+            {movie.title}
           </strong>
-          <p>Coke Studio Bangla</p>
+          <p>{movie.original_title}</p>
           <div className={styles.info}>
-            <p>1.5 M views</p>
+            <p>{movie.popularity}</p>
             <span></span>
-            <p>2 days ago</p>
+            <p>{movie.release_date}</p>
           </div>
         </div>
       </div>
-    </section>
+    </Link>
   );
 }
 
