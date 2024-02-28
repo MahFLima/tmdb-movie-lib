@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import logo from "../../assets/youtube-logo.svg";
 import styles from "./styles.module.css";
@@ -17,9 +17,21 @@ import {
   ThumbsUp,
 } from "@phosphor-icons/react";
 import TagPersonMenu from "../TagPersonMenu";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Menu(props) {
+
+  const [inputSearch, setInputSearch] = useState("");
+  const navigate = useNavigate()
+
+  function handleSubmit() {
+
+    if(!inputSearch) return;
+
+    navigate(`/search?q=${inputSearch}`);
+    setInputSearch("");
+  }
+
   return (
     <nav className={styles["menu-navigation"]}>
       <div className={`${styles["content-logo"]}`}>
@@ -32,8 +44,12 @@ function Menu(props) {
         <Link to="/">TMDB Movie-Lib</Link>
       </div>
       <div className={styles["search-area"]}>
-        <input type="text" placeholder="Buscar" />
-        <button>
+        <input 
+          type="text" 
+          placeholder="Buscar" 
+          onChange={(e) => {setInputSearch(e.target.value);}}
+        />
+        <button onClick={() => {handleSubmit()}}>
           <MagnifyingGlass size={16} />
         </button>
       </div>
