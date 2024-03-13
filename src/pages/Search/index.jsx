@@ -13,7 +13,8 @@ const language = import.meta.env.VITE_LANGUAGE
 function Search() {
   const [searchParams] = useSearchParams()
 
-  const [movies, setMovies] = useState([{'id': 999, 'title': "teste", 'poster_path': "teste", 'description': "teste"}])
+  const [movies, setMovies] = useState([])
+  const [series, setSeries] = useState([])
   const query = searchParams.get("q")
 
   useEffect(() =>{
@@ -24,8 +25,8 @@ function Search() {
       const data = await getMovies(searchWithQueryURL)
       const dataTV = await getMovies(searchWithQueryURLTV)
 
-      setMovies(dataTV.results)
-      // setMovies({...movies, teste:dataTV.results})
+      setMovies(data.results)
+      setSeries(dataTV.results)
     }
 
     result()
@@ -35,8 +36,9 @@ function Search() {
     <>
       <strong className={styles.title}>Resultados para: {query}</strong>
       <section className={`${styles["content-videos"]}`}>
-        {movies.length === 0 && <p>Carregando...</p>}
+        {movies.length === 0 && series.length === 0 && <p>Carregando...</p>}
         {movies.map((movie) => <CardVideo key={movie.id} movie={movie}/>)}
+        {series.map((serie) => <CardVideo key={serie.id} movie={serie}/>)}
       </section>
     </>
   );
