@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import logo from "../../assets/youtube-logo.svg";
 import styles from "./styles.module.css";
 import {
   ArrowDown,
@@ -30,9 +29,11 @@ function Menu(props) {
 
     navigate(`/search?q=${inputSearch}`);
     setInputSearch("");
+    props.click()
   }
 
   return (
+    <>
     <nav className={styles["menu-navigation"]}>
       <div className={`${styles["content-logo"]}`}>
         <button>
@@ -55,28 +56,22 @@ function Menu(props) {
       </div>
       <ul className={`${styles.navigation} ${styles.nav01}`}>
         <li>
-          <Link to='/'>
+          <Link to='/' onClick={props.click}>
             <House size={24} />
             Home
           </Link>
         </li>
         <li>
-          <a>
+          <Link to='popular' onClick={props.click}>
             <Compass size={24} />
             Explores
-          </a>
+          </Link>
         </li>
         <li>
-          <a>
-            <Swap size={24} />
-            Shorts
-          </a>
-        </li>
-        <li>
-          <a>
+          <Link to="tv-show" onClick={props.click}>
             <MonitorPlay size={24} />
-            Subscriptions
-          </a>
+            TV Show
+          </Link>
         </li>
       </ul>
       <div className={styles.line}></div>
@@ -119,6 +114,8 @@ function Menu(props) {
         </li>
       </ul>
     </nav>
+    <div className={props.activeMenu} onClick={props.click}></div>
+    </>
   );
 }
 

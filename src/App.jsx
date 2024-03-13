@@ -1,12 +1,10 @@
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 
 import Header from "./components/Header";
 import Menu from "./components/Menu";
 
 import styles from "./App.module.css"
-import Home from "./pages/Home";
-import { Outlet } from "react-router-dom";
-
 
 function App() {
   const [menuActive, setMenuActive] = useState(false);
@@ -22,6 +20,7 @@ function App() {
           click={() => {
             handleMenuClick();
           }}
+          activeMenu={menuActive ? styles.cloth : styles.none}
         />
       ) : (
         <></>

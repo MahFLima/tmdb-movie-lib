@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 
 import styles from "./styles.module.css";
-import logo from "../../assets/youtube-logo.svg";
-import { Bell, DotsThreeOutline, List, MagnifyingGlass, VideoCamera } from "@phosphor-icons/react";
+import {  List, MagnifyingGlass } from "@phosphor-icons/react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Header(props) {
@@ -29,7 +28,7 @@ function Header(props) {
         <Link to="/">TMDB Movie-Lib</Link>
       </div>
       <div className={styles["search-area"]}>
-        <input type="text" placeholder="Buscar" onChange={(e) => setInputSearch(e.target.value)}/>
+        <input type="text" placeholder="Buscar" value={inputSearch} onChange={(e) => setInputSearch(e.target.value)}/>
         <button onClick={() => handleSubmit()}>
           <MagnifyingGlass size={24} />
         </button>

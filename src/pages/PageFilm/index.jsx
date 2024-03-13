@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 import styles from "./styles.module.css";
-import image from "../../assets/image.png";
 import { useParams } from "react-router-dom";
+import image from "../../assets/photo.jpg"
+import { getMovies } from "../../utils/api";
 
 const moviesURL = import.meta.env.VITE_API;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -11,34 +12,25 @@ const imageUrl = import.meta.env.VITE_IMG;
 
 function PageFilm() {
   const [movie, setMovie] = useState([]);
-  const [video, setVideo] = useState([]);
   const { id } = useParams();
 
-  const getMovie = async (url) => {
-    const res = await fetch(url);
-    const data = await res.json();
-
-    setMovie(data);
-  };
-
-  const getVideo = async (url) => {
-    const res = await fetch(url);
-    const data = await res.json();
-
-    setVideo(data.results[1])
-  }
 
   useEffect(() => {
     const movieUrl = `${moviesURL}/${id}?${language}&${apiKey}`;
-    const videoUrl = `${moviesURL}/${id}/videos?${language}&${apiKey}`;
 
-    getMovie(movieUrl);
-    getVideo(videoUrl)
-  }, []);
+    async function result(){
+      const data = await getMovies(movieUrl)
+
+      setMovie(data)
+    }
+
+    result()
+  }, [movie]);
 
   return (
     <div className={styles.container}>
-      <img src={imageUrl + movie.backdrop_path} alt="" />
+      {movie.length === 0 && <p>Carregando...</p>}
+      <img src={movie.backdrop_path ? imageUrl + movie.backdrop_path : image} alt="" />
       <div className={styles["content-movie-page"]}>
         <img src={imageUrl + movie.poster_path} alt="" />
         <div className={styles["content-description-movie-page"]}>
@@ -49,11 +41,6 @@ function PageFilm() {
           <p>{movie.overview}</p>
         </div>
       </div>
-      {/* <iframe
-          className={styles["video-film"]}
-          height="315"
-          src={`https://www.youtube.com/embed/${movie.key}`}
-        ></iframe> */}
     </div>
   );
 }

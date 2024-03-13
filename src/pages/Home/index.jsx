@@ -2,30 +2,30 @@ import React, { useEffect, useState } from "react";
 import styles from "./styles.module.css";
 
 import CardVideo from "../../components/CardVideo";
-import image from "../../assets/image.png";
+import { getMovies } from "../../utils/api";
 
 const moviesURL = import.meta.env.VITE_API
 const apiKey = import.meta.env.VITE_API_KEY
 const language = import.meta.env.VITE_LANGUAGE
 
-function Home() {
+function Home({description = "top_rated"}) {
   const [topMovies, setTopMovies] = useState([])
 
-  const getTopRatedMovies = async (url) => {
-    const res = await fetch(url)
-    const data = await res.json()
-
-    setTopMovies(data.results)
-  }
-
   useEffect(() =>{
-    const topRatedUrl = `${moviesURL}/top_rated?${language}&${apiKey}`
+    const topRatedUrl = `${moviesURL}/${description}?${language}&${apiKey}`
 
-    getTopRatedMovies(topRatedUrl)
-  },[])
+    async function result(){
+      const data = await getMovies(topRatedUrl)
+
+      setTopMovies(data.results)
+    }
+
+    result()
+  },[topMovies])
 
   return (
     <>
+      {topMovies.length === 0 && <p>Carregando...</p>}
       <section className={`${styles["content-videos"]}`}>
         {topMovies.map((m) => {
           return(

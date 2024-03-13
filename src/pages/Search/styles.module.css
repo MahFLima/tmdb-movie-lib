@@ -1,5 +1,11 @@
 .content-videos{
   display: flex;
+  justify-content: center;
   gap: 1.5rem;
   flex-wrap: wrap;
+}
+
+.title{
+  text-align: center;
+  font-size: 2rem;
 }
