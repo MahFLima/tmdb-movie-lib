@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import styles from "./styles.module.css";
 import { useSearchParams } from "react-router-dom";
-import CardVideo from "../../components/CardVideo";
+import CardFilm from "../../components/CardFilm";
+import CardTV from "../../components/CardTV";
 import { getMovies } from "../../utils/api";
 
 const searchURL = import.meta.env.VITE_SEARCH_MOVIE
@@ -37,8 +38,8 @@ function Search() {
       <strong className={styles.title}>Resultados para: {query}</strong>
       <section className={`${styles["content-videos"]}`}>
         {movies.length === 0 && series.length === 0 && <p>Carregando...</p>}
-        {movies.map((movie) => <CardVideo key={movie.id} movie={movie}/>)}
-        {series.map((serie) => <CardVideo key={serie.id} movie={serie}/>)}
+        {movies.map((movie) => <CardFilm key={movie.id} movie={movie}/>)}
+        {series.map((serie) => <CardTV key={serie.id} tvShow={serie}/>)}
       </section>
     </>
   );

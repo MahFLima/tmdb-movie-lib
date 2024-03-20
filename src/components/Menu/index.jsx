@@ -1,21 +1,15 @@
 import React, { useState } from "react";
 
 import styles from "./styles.module.css";
+
 import {
-  ArrowDown,
-  Clock,
-  ClockCounterClockwise,
   Compass,
   House,
   List,
   MagnifyingGlass,
   MonitorPlay,
-  PlayCircle,
-  Queue,
-  Swap,
-  ThumbsUp,
 } from "@phosphor-icons/react";
-import TagPersonMenu from "../TagPersonMenu";
+
 import { Link, useNavigate } from "react-router-dom";
 
 function Menu(props) {
@@ -72,45 +66,6 @@ function Menu(props) {
             <MonitorPlay size={24} />
             TV Show
           </Link>
-        </li>
-      </ul>
-      <div className={styles.line}></div>
-      <ul className={styles.navigation}>
-        <li>
-          <a>
-            <Queue size={24} />
-            Library
-          </a>
-        </li>
-        <li>
-          <a>
-            <ClockCounterClockwise size={24} />
-            History
-          </a>
-        </li>
-        <li>
-          <a>
-            <PlayCircle size={24} />
-            Your videos
-          </a>
-        </li>
-        <li>
-          <a>
-            <Clock size={24} />
-            Watch later
-          </a>
-        </li>
-        <li>
-          <a>
-            <ThumbsUp size={24} />
-            Liked videos
-          </a>
-        </li>
-        <li>
-          <a>
-            <ArrowDown size={24} />
-            Show more
-          </a>
         </li>
       </ul>
     </nav>

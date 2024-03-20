@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
 import styles from "./styles.module.css";
-import {  List, MagnifyingGlass } from "@phosphor-icons/react";
+
+import { List, MagnifyingGlass } from "@phosphor-icons/react";
 import { Link, useNavigate } from "react-router-dom";
 
 function Header(props) {
@@ -33,24 +34,7 @@ function Header(props) {
           <MagnifyingGlass size={24} />
         </button>
       </div>
-      <ul className={styles.widgets}>
-        {/* <li>
-          <a href="#">
-            <VideoCamera size={24} />
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <DotsThreeOutline size={24} />
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <Bell size={24} />
-          </a>
-        </li> */}
-        <img src="https://github.com/mahflima.png" alt="" />
-      </ul>
+      <img src="https://github.com/mahflima.png" alt="" />
     </header>
   );
 }

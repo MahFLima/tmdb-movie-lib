@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import styles from "./styles.module.css";
 
-import CardVideo from "../../components/CardVideo";
+import styles from "./styles.module.css";
+import CardFilm from "../../components/CardFilm";
 import { getMovies } from "../../utils/api";
 
 const moviesURL = import.meta.env.VITE_API
@@ -29,7 +29,7 @@ function Home({description = "top_rated"}) {
       <section className={`${styles["content-videos"]}`}>
         {topMovies.map((m) => {
           return(
-            <CardVideo key={m.id} movie={m}/>
+            <CardFilm key={m.id} movie={m}/>
           )
         })}
       </section>

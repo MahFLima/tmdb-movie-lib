@@ -1,13 +1,13 @@
 import React from "react";
 
 import styles from "./styles.module.css";
-import { Link } from "react-router-dom";
-
 import image from "../../assets/image.jpg"
+
+import { Link } from "react-router-dom";
 
 const imageUrl = import.meta.env.VITE_IMG
 
-function CardVideo({movie}) {
+function CardFilm({movie}) {
   return (
     <Link 
       to={`/movie/${movie.id}`} 
@@ -31,4 +31,4 @@ function CardVideo({movie}) {
   );
 }
 
-export default CardVideo;
+export default CardFilm;

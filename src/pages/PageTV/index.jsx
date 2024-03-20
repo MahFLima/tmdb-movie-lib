@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import styles from "./styles.module.css";
 
-import CardVideo from "../../components/CardVideo";
+import styles from "./styles.module.css";
+import CardTV from "../../components/CardTV";
 import { getMovies } from "../../utils/api";
 
 const seriesURL = import.meta.env.VITE_API_TV
@@ -27,9 +27,9 @@ function PageTv({description = "top_rated"}) {
     <>
       {topSeries.length === 0 && <p>Carregando...</p>}
       <section className={`${styles["content-videos"]}`}>
-        {topSeries.map((m) => {
+        {topSeries.map((tv) => {
           return(
-            <CardVideo key={m.id} movie={m}/>
+            <CardTV key={tv.id} tvShow={tv}/>
           )
         })}
       </section>

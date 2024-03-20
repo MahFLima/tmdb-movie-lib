@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from "react";
 
 import styles from "./styles.module.css";
+import { formatarDataUSparaPT } from "../../utils";
 import { useParams } from "react-router-dom";
 import { getMovies } from "../../utils/api";
-import { convertToHoursMinutes, formatarDataUSparaPT } from "../../utils";
 
-const moviesURL = import.meta.env.VITE_API;
+const tvShowURL = import.meta.env.VITE_API_TV;
 const apiKey = import.meta.env.VITE_API_KEY;
 const language = import.meta.env.VITE_LANGUAGE;
 const imageUrl = import.meta.env.VITE_IMG;
 
-function PageFilm() {
+function PageTvShow() {
   const [movie, setMovie] = useState([]);
   const { id } = useParams();
 
   useEffect(() => {
-    const movieUrl = `${moviesURL}/${id}?${language}&${apiKey}`;
+    const movieUrl = `${tvShowURL}/${id}?${language}&${apiKey}`;
 
     async function result() {
       const data = await getMovies(movieUrl);
@@ -39,14 +39,14 @@ function PageFilm() {
         <img src={imageUrl + movie.poster_path} alt="" />
         <div className={styles["content-description-movie-page"]}>
           <strong className={styles.title}>
-            {movie.title} -
+            {movie.name} -
             <span>
-              &nbsp;{movie.release_date && movie.release_date.substr(0, 4)}
+              &nbsp;{movie.first_air_date && movie.first_air_date.substr(0,4)}
             </span>
           </strong>
           <div className={styles["details-film"]}>
             <p>
-              {movie.release_date && formatarDataUSparaPT(movie.release_date)}
+              {movie.first_air_date && formatarDataUSparaPT(movie.first_air_date)}
             </p>
             <div className={styles["bullet-point"]}></div>
             <ul className={styles["list-genre"]}>
@@ -55,8 +55,6 @@ function PageFilm() {
                   return <p key={index}>{genre.name}</p>;
                 })}
             </ul>
-            <div className={styles["bullet-point"]}></div>
-            <p>{convertToHoursMinutes(movie.runtime)}m</p>
           </div>
 
           <div></div>
@@ -70,4 +68,4 @@ function PageFilm() {
   );
 }
 
-export default PageFilm;
+export default PageTvShow;
